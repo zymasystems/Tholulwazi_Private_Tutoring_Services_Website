@@ -35,7 +35,7 @@
     (() => {
       const form = document.getElementById('waitlist-form');
       const status = document.getElementById('form-status');
-      const admissionsEmail = 'admissions@tholulwazi.co.za';
+      const webhookUrl = 'https://n8n.zyma.co.za/webhook/tholulwazi-enquiry';
       const steps = Array.from(form.querySelectorAll('[data-step]'));
       const indicators = Array.from(form.querySelectorAll('[data-step-indicator]'));
       const progressFill = document.getElementById('progress-fill');
@@ -92,6 +92,7 @@
         nextButton.hidden = !mobileLayout.matches || currentStep === steps.length - 1;
         submitButton.hidden = mobileLayout.matches && currentStep !== steps.length - 1;
         status.textContent = '';
+        status.classList.remove('is-error', 'is-success');
         if (moveFocus && mobileLayout.matches) {
           steps[currentStep].querySelector('h3').focus({ preventScroll: true });
         }
@@ -128,6 +129,7 @@
         submitButton.hidden = false;
         review.replaceChildren();
         status.textContent = '';
+        status.classList.remove('is-error', 'is-success');
       }
 
       nextButton.addEventListener('click', () => {
@@ -156,19 +158,72 @@
 
         const data = new FormData(form);
         const subjects = data.getAll('subjects');
-        const message = [
-          'Hi Tholulwazi, I would like to join the pre-launch tutoring waitlist.',
-          `Parent / Guardian: ${data.get('parentName')}`,
-          `Learner: ${data.get('learnerName')}`,
-          `Email: ${data.get('email')}`,
-          `Phone: ${data.get('phone')}`,
-          `Grade: ${data.get('grade')}`,
-          `Subjects: ${subjects.length ? subjects.join(', ') : 'Not specified'}`,
-          `Preferred delivery: ${data.get('delivery')}`
-        ].join('\n');
 
-        const subject = encodeURIComponent('Tutoring enquiry');
-        status.textContent = 'Opening your email app. Send the prepared email to complete your enquiry.';
-        window.location.href = `mailto:${admissionsEmail}?subject=${subject}&body=${encodeURIComponent(message)}`;
+        const payload = {
+          parentName: String(data.get('parentName') || '').trim(),
+          learnerName: String(data.get('learnerName') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          phone: String(data.get('phone') || '').trim(),
+          grade: String(data.get('grade') || '').trim(),
+          subjects,
+          delivery: String(data.get('delivery') || '').trim(),
+          message: ''
+        };
+
+        const originalButtonText = submitButton.textContent.trim();
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+        status.textContent = 'Submitting your enquiry…';
+
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(async response => {
+            const responseText = await response.text();
+            let result = {};
+
+            if (responseText) {
+              try {
+                result = JSON.parse(responseText);
+              } catch {
+                result = { message: responseText };
+              }
+            }
+
+            if (!response.ok) {
+              throw new Error(
+                result.message || result.error || 'We could not submit your enquiry. Please try again.'
+              );
+            }
+
+            return result;
+          })
+          .then(result => {
+            status.textContent =
+              result.message ||
+              'Thank you! Your enquiry has been submitted successfully. The Tholulwazi admissions team will be in touch.';
+            status.classList.remove('is-error');
+            status.classList.add('is-success');
+            form.reset();
+            updateReview();
+          })
+          .catch(error => {
+            console.error('Tholulwazi enquiry submission failed:', error);
+            status.textContent =
+              error.message ||
+              'Something went wrong while submitting your enquiry. Please check your connection and try again.';
+            status.classList.remove('is-success');
+            status.classList.add('is-error');
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
+            submitButton.innerHTML = `${originalButtonText.replace(/\s*→\s*$/, '')} <span aria-hidden="true">→</span>`;
+          });
       });
     })();
