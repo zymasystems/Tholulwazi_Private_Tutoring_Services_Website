@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f2942">
+  <meta name="description" content="Tholulwazi Private Tutoring is preparing a new website and online lesson booking experience. Launching 16 December 2026.">
+  <title>Coming Soon | Tholulwazi Private Tutoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="announcement">A new learning experience is taking shape <span>— launching December 2026</span></div>
+
+  <header>
+    <a class="brand" href="#" aria-label="Tholulwazi Private Tutoring home">
+      <img src="images/logo.jpg" alt="Tholulwazi Private Tutoring Services">
+    </a>
+    <div class="header-note">Website &amp; Booking System</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow"><span aria-hidden="true">✨</span> Something exceptional is coming <span class="eyebrow-divider">•</span> Grades 8 to 12</div>
+        <h1>Unlock Your Child’s True <em>Academic Brilliance</em></h1>
+        <p class="intro">
+          We’re building a dedicated tutoring platform and lesson booking experience to help learners
+          and families connect with personalised academic support.
+        </p>
+
+        <div class="countdown-wrap">
+          <div class="countdown-panel">
+            <div class="countdown" aria-label="Countdown to expected completion">
+              <div class="time-card"><span class="time-value" id="cd-days">00</span><span class="time-unit">Days</span></div>
+              <div class="time-card"><span class="time-value" id="cd-hours">00</span><span class="time-unit">Hours</span></div>
+              <div class="time-card"><span class="time-value" id="cd-mins">00</span><span class="time-unit">Mins</span></div>
+              <div class="time-card"><span class="time-value" id="cd-secs">00</span><span class="time-unit">Secs</span></div>
+            </div>
+            <div class="launch-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path>
+              </svg>
+              Expected website launch: 16 December 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" aria-label="Pre-launch early access">
+      <div class="waitlist-card">
+        <div class="waitlist-heading">
+          <div>
+            <div class="section-kicker"><span class="shield-icon" aria-hidden="true">♢</span> Now accepting Bookings </div>
+            <h2>Start Your Learner's Journey</h2>
+          </div>
+        </div>
+
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <div class="step-progress" aria-label="Form progress">
+            <div class="progress-track"><span class="progress-fill" id="progress-fill"></span></div>
+            <ol class="step-indicators">
+              <li class="step-indicator is-current" data-step-indicator="0"><span>1</span><strong>Contact</strong></li>
+              <li class="step-indicator" data-step-indicator="1"><span>2</span><strong>Academics</strong></li>
+              <li class="step-indicator" data-step-indicator="2"><span>3</span><strong>Preferences</strong></li>
+            </ol>
+          </div>
+
+          <section class="form-step is-active" data-step="0" aria-labelledby="contact-step-title">
+            <div class="step-heading">
+              <span>Step 1 of 3</span>
+              <h3 id="contact-step-title" tabindex="-1">Your contact details</h3>
+              <p>Tell us who we should contact about tutoring.</p>
+            </div>
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Parent / Guardian Full Name <b aria-hidden="true">*</b></span>
+                <input type="text" name="parentName" autocomplete="name" placeholder="Enter parent or guardian's full name" required>
+              </label>
+              <label class="form-field">
+                <span>Learner Full Name <b aria-hidden="true">*</b></span>
+                <input type="text" name="learnerName" placeholder="Enter learner's full name" required>
+              </label>
+              <label class="form-field">
+                <span>Email Address <b aria-hidden="true">*</b></span>
+                <input type="email" name="email" autocomplete="email" placeholder="name@example.com" required>
+              </label>
+              <label class="form-field">
+                <span>Phone Number <b aria-hidden="true">*</b></span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+27 82 000 0000" required>
+                <small>Used for direct consultation scheduling</small>
+              </label>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="1" aria-labelledby="academics-step-title" hidden>
+            <div class="step-heading">
+              <span>Step 2 of 3</span>
+              <h3 id="academics-step-title" tabindex="-1">Learner's academics</h3>
+              <p>Select the learner's current grade and subjects where support is needed.</p>
+            </div>
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Grade Level <b aria-hidden="true">*</b></span>
+                <select name="grade" required>
+                  <option value="" selected disabled>Select Scholar Grade Level</option>
+                  <option>Grade 8</option>
+                  <option>Grade 9</option>
+                  <option>Grade 10</option>
+                  <option>Grade 11</option>
+                  <option>Grade 12 (Matric)</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="choice-group">
+              <legend>Subjects of Interest (Select all that apply)</legend>
+              <div class="subject-grid">
+                <label class="check-option"><input type="checkbox" name="subjects" value="English"><span>English</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="Maths"><span>Maths</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="Afrikaans"><span>Afrikaans</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="Life Sciences"><span>Life Sciences</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="isiZulu"><span>isiZulu</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="Business Studies"><span>Business Studies</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="History"><span>History</span></label>
+                <label class="check-option"><input type="checkbox" name="subjects" value="Physical Sciences"><span>Physical Sciences</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="form-step" data-step="2" aria-labelledby="preferences-step-title" hidden>
+            <div class="step-heading">
+              <span>Step 3 of 3</span>
+              <h3 id="preferences-step-title" tabindex="-1">Lesson preferences</h3>
+              <p>Choose how you would prefer tutoring to be delivered, then review your request.</p>
+            </div>
+            <fieldset class="choice-group delivery-group">
+              <legend>Preferred Delivery Mode</legend>
+              <div class="delivery-options">
+                <label class="delivery-option">
+                  <input type="radio" name="delivery" value="In-Person (Home Tutorial)" checked>
+                  <span><strong>In-Person (Home Tutorial)</strong><small>Pretoria &amp; Johannesburg Regions</small></span>
+                </label>
+                <label class="delivery-option">
+                  <input type="radio" name="delivery" value="Interactive Online 1-on-1">
+                  <span><strong>Interactive Online 1-on-1</strong><small>Live whiteboard &amp; recorded notes</small></span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="request-review" id="request-review" aria-live="polite"></div>
+          </section>
+
+          <div class="step-navigation">
+            <button class="step-button step-back" id="step-back" type="button" hidden>Back</button>
+            <span class="step-navigation-spacer"></span>
+            <button class="step-button step-next" id="step-next" type="button">Continue <span aria-hidden="true">→</span></button>
+            <button class="waitlist-submit" id="submit-request" type="submit" hidden>Email Your Request <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="privacy-note">Your email app will open with your request addressed to admissions. Please send the email to complete your enquiry.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="waitlist-proof">
+          <div class="proof-people" aria-hidden="true"><span>TM</span><span>LN</span><span>KM</span><span>+20</span></div>
+          <span class="proof-copy">  South African parents and learners trust Tholulwazi Private Tutoring Services for proven quality results.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-inner">
+        <div class="features-heading">
+          <div class="section-kicker">What we’re working on</div>
+          <h2>Built to make learning support easier.</h2>
+          <p>The upcoming Tholulwazi platform is being designed around a clear, convenient tutoring journey.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">◎</div>
+            <h3>Personalised Tutoring</h3>
+            <p>Learning support shaped around each learner’s academic needs, goals and pace.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">▦</div>
+            <h3>Online Lesson Booking</h3>
+            <p>A straightforward way to explore tutoring options and arrange lesson sessions.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <h3>A Connected Experience</h3>
+            <p>A central online destination for families looking to access Tholulwazi’s tutoring services.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="contact-inner">
+        <div>
+          <div class="section-kicker">Need to get in touch?</div>
+          <h2>We’re still here to help.</h2>
+          <p>For tutoring enquiries while the website is being developed, contact the Tholulwazi team directly.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-link primary" href="mailto:admissions@tholulwazi.co.za">Email the Tholulwazi Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-main">
+        <a class="footer-brand" href="#" aria-label="Tholulwazi Private Tutoring, back to top">
+          <span class="footer-brand-name">Tholulwazi</span>
+          <span class="footer-brand-sub">Private Tutoring</span>
+        </a>
+        <p class="footer-description">Personalised academic support to help every learner move forward with confidence.</p>
+      </div>
+      <div class="footer-contact">
+        <h2>Get in touch</h2>
+        <a href="mailto:admissions@tholulwazi.co.za">admissions@tholulwazi.co.za</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tholulwazi Private Tutoring. All rights reserved.</span>
+      <span>Supporting learners, one step at a time.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
